@@ -7,6 +7,26 @@ on:
     branches: [main]
 
 jobs:
+  readme:
+    name: README sync
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify generated README
+        run: npm run readme:check
+
   client:
     name: Client — Lint, Build & Test
     runs-on: ubuntu-latest

@@ -9,6 +9,8 @@
     "server": "nodemon --prefix server server.js",
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run dev --prefix client\" \"npm run dev --prefix server\"",
+    "readme:sync": "node scripts/sync-readme.cjs",
+    "readme:check": "node scripts/sync-readme.cjs --check",
     "format": "prettier --write \"{client/src,server}/**/*.{js,jsx,json,css,md}\"",
     "start": "node server/server.js"
   },
